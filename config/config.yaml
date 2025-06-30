@@ -1,0 +1,43 @@
+project_name: "Détection de Départ d'Incendie"
+description: "Projet de détection et d'extinction de départ d'incendie en cuisine utilisant un modèle U-Net."
+author: "Azel O."
+
+debug : true
+
+model:
+  input_shape: 128 # Dimension des images d'entrées
+
+# Hyperparamètres d'entraînement
+training:
+  epochs: 8
+  batch_size: 32
+
+# Paramètres de prétraitement des données
+preprocessing:
+  augmentation_per_image: 10
+  augmentation:
+    rotation_range: 20
+    width_shift_range: 0.2
+    height_shift_range: 0.2
+    shear_range: 0.2
+    zoom_range: 0.2
+    horizontal_flip: False
+    vertical_flip: False
+    fill_mode: "nearest"
+
+# Chemins des données
+data:
+  raw: "data/raw/"
+  processed: "data/processed/"
+  train: "data/train/"
+  val: "data/val/"
+  test: "data/test/"
+  json_data: "data/test/"
+
+# Chemins pour sauvegarder les résultats
+results:
+  show_result: True
+  send_result_to_discord: True
+  models: "results/models/"
+  webhook: "https://discord.com/api/webhooks/XXXXX/XXXXX" # Pour stocker les résultats des prédictions
+  model_name: "MODEL_NAME.keras"
