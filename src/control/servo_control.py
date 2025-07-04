@@ -4,7 +4,7 @@ from config import config
 
 from serial.tools.list_ports import comports
 
-# ⚙️ Configuration globale
+# Configuration globale
 debug = config["debug"]
 current_angle = [90, 140]  # [PAN, TILT]
 inverser_gauche_droite = 1  # 1 ou -1 pour inverser sens gauche/droite
@@ -21,7 +21,7 @@ def show_coms():
 if config["debug"]:
     show_coms()
 
-# 🔌 Connexion série
+# Connexion série
 arduino = Serial('COM4', 9600)
 
 # Heartbeat
@@ -134,7 +134,7 @@ def inverser(val):
 sleep(2) # Laisser le temps à Python d'initialiser la connexion
 init_servos()
 
-# 🔧 Programme principal de test
+# Programme principal de test
 if __name__ == "__main__":
     print("Tapez un angle, ex: 'P120' ou 'T45' ou 'P90T60'")
     print("Tapez 'q' pour quitter")
